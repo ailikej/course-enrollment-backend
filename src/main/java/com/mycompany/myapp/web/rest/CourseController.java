@@ -60,13 +60,12 @@ public class CourseController {
     }
 
 
-    // DELETE: /course/enrollment
+    // DELETE: /course/enrollment/{courseName}
     // Request body:  {courseName}
     // Response body: void
     // Header: User token
-    @DeleteMapping(path = "/course/enrollment")
-    public void dropCourse(@RequestBody CourseDto courseDto){
-        String courseName = courseDto.getCourseName();
+    @DeleteMapping(path = "/course/enrollment/{courseName}")
+    public void dropCourse(@PathVariable String courseName){   // 改错404
         String userName = userUtility.getUserName();
         courseService.dropCourse(courseName, userName);
     }
